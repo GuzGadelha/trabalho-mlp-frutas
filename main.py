@@ -2,12 +2,17 @@ import csv
 from dados import dados_frutas
 from mlp import RedeNeuralMLP
 
-# Criamos uma lista de configurações para testar automaticamente
+# Listas com todos os valores que queremos cruzar
+lista_ocultos = [2, 3, 4, 5]
+lista_taxas = [0.1, 0.2, 0.3, 0.5]
+lista_epocas = [5000, 10000, 12000, 15000]
+
+# O Python cria automaticamente todas as 64 combinações possíveis
 configuracoes_para_testar = [
-    {"ocultos": 2, "taxa": 0.1, "epocas": 5000},  # Configuração mais fraca
-    {"ocultos": 3, "taxa": 0.3, "epocas": 10000},  # Configuração média
-    {"ocultos": 4, "taxa": 0.2, "epocas": 12000},  # Configuração intermediária
-    {"ocultos": 5, "taxa": 0.5, "epocas": 15000},  # Configuração forte/rápida
+    {"ocultos": o, "taxa": t, "epocas": e}
+    for o in lista_ocultos
+    for t in lista_taxas
+    for e in lista_epocas
 ]
 
 print("Iniciando testes de múltiplas configurações e salvando no CSV...\n")
